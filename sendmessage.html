@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML form submit to Google Sheet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container text-center">
+        <br>
+        <h1>HTML form submit to Google Sheet</h1>
+        <br>
+        <div class="card mx-auto" style="width: 18rem;">
+            <div class="card-body">
+                <form name="submit-to-google-sheet">
+                    <div class="mb-3">
+                        <input name="fullname" type="text" class="form-control" placeholder="Fullname" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <input name="email" type="email" class="form-control" placeholder="Email" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxR5ylrJLF_u6BvBkIhlLP6KkcBrtWdtregV2J-2dWGjQfAdyQDLxNjV7HG3mkcEzteKQ/exec'
+        const form = document.forms['contactform']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("Thank you! your form is submitted successfully."))
+                .then(() => { window.location.reload(); })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
