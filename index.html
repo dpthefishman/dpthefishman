@@ -360,7 +360,7 @@ The best mysteries are those with ingenious clues along the way that brings out 
             form.addEventListener('submit', e => {
                 e.preventDefault()
                 fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-                    .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                    .then(response => alert("Thanks for Contacting us! We will contact you in the next 24h"))
                     .catch(error => console.error('Error!', error.message))
             })
         </script>
